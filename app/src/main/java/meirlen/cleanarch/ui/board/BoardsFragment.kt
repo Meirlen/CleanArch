@@ -3,27 +3,21 @@ package meirlen.cleanarch.ui.board
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
-import androidx.annotation.StringRes
 import com.example.domain.exception.Failure
 import meirlen.cleanarch.R
 import meirlen.cleanarch.base.ui.BaseFragment
-import meirlen.cleanarch.base.vo.Status
 import meirlen.cleanarch.utill.interfaces.ItemClickListener
 import com.example.gateway.entity.Board
 import meirlen.cleanarch.ui.board.list.BoardsAdapter
-import meirlen.cleanarch.utill.ext.failure
-import meirlen.cleanarch.utill.ext.observe
 import kotlinx.android.synthetic.main.board_list_fragment.*
-import kotlinx.android.synthetic.main.view_lce_loading.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
 
 
     val TAG = javaClass.simpleName
-    private val model: BoardViewModel by viewModel()
+    val mViewModel: BoardViewModel by viewModel()
     private lateinit var mAdapter: BoardsAdapter
 
     companion object {
@@ -39,9 +33,9 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = mAdapter
 
-        model.getBoards()
-        model.uiData.observe(this, Observer(this@BoardsFragment::renderList))
-        model.failure.observe(this, Observer(this@BoardsFragment::handleFailure))
+        mViewModel.getBoards()
+        mViewModel.uiData.observe(this, Observer(this@BoardsFragment::renderList))
+        mViewModel.failure.observe(this, Observer(this@BoardsFragment::handleFailure))
 
     }
 

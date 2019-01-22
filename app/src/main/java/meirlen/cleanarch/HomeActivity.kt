@@ -61,7 +61,7 @@ class HomeActivity : AppCompatActivity() {
                 SEARCH -> HomeFragment()
                 SHARE -> HomeFragment()
                 FAVOURITE -> HomeFragment()
-                PROFILE -> HomeFragment()
+                PROFILE -> ProfileFragment()
                 else -> HomeFragment()
             }
         }).commit()

@@ -32,9 +32,14 @@ class HomeActivityTest {
     @Test
     fun shouldSelectHomeTabOnCreate() {
         assertEquals(HomeActivity.HOME, activity.bottomTabNavigation.selectedTabPosition)
-        assertTrue(activity.supportFragmentManager.findFragmentById(R.id.frame_container) is HomeFragment)
+        assertTrue(activity.supportFragmentManager.findFragmentById(R.id.frame_container) is BoardsFragment)
     }
 
+    @Test
+    fun shouldShowProfileFragment() {
+        activity.bottomTabNavigation.getTabAt(HomeActivity.PROFILE)?.select()
+        assertEquals(HomeActivity.PROFILE, activity.bottomTabNavigation.selectedTabPosition)
+    }
 
     @After
     fun tearDown() {

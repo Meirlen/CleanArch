@@ -135,6 +135,7 @@ dependencies {
     // Koin AndroidX ViewModel feature
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
 
+    implementation  "org.koin:koin-test:$koinVersion"
 
 }
 
