@@ -1,3 +1,39 @@
 <resources>
-    <string name="app_name">CleanArch</string>
+    <string name="app_name">TrelloClient</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_fragment">Hello search Fragment</string>
+
+    <string name="error_no_results">No Board found :(</string>
+    <string name="edit_profile">Edit Profile</string>
+
+
+    <string name="empty_message">It\'s empty in here.</string>
+    <string name="try_again">Try Again</string>
+    <string name="network_connection_error">Sorry - something did not go through! Please check your network connection and try again.</string>
+
+    <string name="default_error">Something went wrong…</string>
+    <string name="сould_not_find_with_placeholder">Could not find %s</string>
+    <string name="сould_not_find">Could not find</string>
+
+    <string name="back">Back</string>
+    <string name="blog_posts">Blog Posts</string>
+
+
+    <string name="section_see_all">See All</string>
+    <string name="boards">Boards</string>
+    <string name="_12">12</string>
+    <string name="_125">125</string>
+    <string name="lists">Lists</string>
+    <string name="cards">Cards</string>
+    <string name="_50">50</string>
+
+
+
+    <string name="failure_network_connection">No Network Connection.</string>
+    <string name="failure_server_error">Server Error</string>
+    <string name="failure_movies_list_unavailable">Movies Unavailable.</string>
+    <string name="failure_movie_non_existent">Movie Not Existent.</string>
+
 </resources>

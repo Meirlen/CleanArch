@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="70dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ava_picture"
+        app:civ_border_color="@color/grey"
+        app:civ_border_width="1dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/edit_btn"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/board_text_count"
+        style="@style/profile_count_text"
+        android:text="@string/_12"
+        app:layout_constraintBottom_toTopOf="@id/edit_btn"
+        app:layout_constraintEnd_toEndOf="@id/textView4"
+        app:layout_constraintStart_toStartOf="@id/textView4"
+        app:layout_constraintTop_toTopOf="@id/profile_image"
+        app:layout_constraintVertical_bias="0.1" />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/profile_text"
+        android:text="@string/boards"
+        app:layout_constraintEnd_toStartOf="@id/textView5"
+        app:layout_constraintStart_toStartOf="@id/edit_btn"
+        app:layout_constraintTop_toBottomOf="@+id/board_text_count"
+        tools:layout_editor_absoluteY="45dp" />
+
+
+    <TextView
+        android:id="@+id/list_count"
+        style="@style/profile_count_text"
+        android:text="@string/_50"
+        app:layout_constraintBaseline_toBaselineOf="@+id/board_text_count"
+        app:layout_constraintEnd_toEndOf="@id/textView5"
+        app:layout_constraintStart_toStartOf="@id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/profile_text"
+        android:text="@string/lists"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@id/textView6"
+        app:layout_constraintStart_toEndOf="@id/textView4" />
+
+    <TextView
+        android:id="@+id/card_count_text"
+        style="@style/profile_count_text"
+        android:text="@string/_125"
+        app:layout_constraintBaseline_toBaselineOf="@+id/board_text_count"
+        app:layout_constraintEnd_toEndOf="@id/textView6"
+        app:layout_constraintStart_toStartOf="@id/textView6" />
+
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/profile_text"
+        android:text="@string/cards"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@id/edit_btn"
+        app:layout_constraintStart_toEndOf="@id/textView5" />
+
+    <Button
+        android:id="@+id/edit_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/bg_btn"
+        android:minHeight="0dp"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/edit_profile"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintStart_toEndOf="@id/profile_image"
+
+        />
+
+
+</android.support.constraint.ConstraintLayout>
