@@ -20,7 +20,7 @@ package meirlen.cleanarch.base.ui
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.example.domain.exception.Failure
-import com.example.gateway.entity.Board
+import com.example.gateway.entity.Error
 
 /**
  * Base ViewModel class with default Failure handling.
@@ -33,5 +33,20 @@ abstract class BaseViewModeli : ViewModel() {
 
     protected fun handleFailure(failure: Failure) {
         this.failure.value = failure
+    }
+
+    protected open fun resolveError(error: Throwable): Boolean {
+        error.printStackTrace()
+        return when (error) {
+            is Error.Content,
+            is Error.Critical -> {
+                (error as? Error)?.let {  }
+                true
+            }
+            is Error.NonCritical -> {
+                true
+            }
+            else -> false
+        }
     }
 }

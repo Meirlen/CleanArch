@@ -22,7 +22,7 @@ import meirlen.cleanarch.di.rxModule
 import org.koin.android.ext.android.startKoin
 
 
-class App : Application(){
+open  class App : Application(){
 
 
     override fun onCreate() {

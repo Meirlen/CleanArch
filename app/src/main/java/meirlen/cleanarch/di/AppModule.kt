@@ -63,6 +63,7 @@ inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String)
     val retrofit = Retrofit.Builder()
             .baseUrl(url)
             .client(okHttpClient)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create()).build()
     return retrofit.create(T::class.java)
 }

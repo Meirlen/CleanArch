@@ -128,7 +128,6 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-
     //DI
     implementation "org.koin:koin-android:$koinVersion"
     // Koin AndroidX Scope feature
@@ -139,10 +138,6 @@ dependencies {
 
 }
 
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
-}
+
 
 
