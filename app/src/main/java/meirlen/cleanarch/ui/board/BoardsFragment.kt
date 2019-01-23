@@ -3,6 +3,7 @@ package meirlen.cleanarch.ui.board
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import com.example.domain.exception.Failure
 import meirlen.cleanarch.R
@@ -11,6 +12,8 @@ import meirlen.cleanarch.utill.interfaces.ItemClickListener
 import com.example.gateway.entity.Board
 import meirlen.cleanarch.ui.board.list.BoardsAdapter
 import kotlinx.android.synthetic.main.board_list_fragment.*
+import meirlen.cleanarch.base.vo.Resource
+import meirlen.cleanarch.base.vo.Status
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
@@ -34,25 +37,21 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
         mRecyclerView.adapter = mAdapter
 
         mViewModel.getBoards()
-        mViewModel.uiData.observe(this, Observer(this@BoardsFragment::renderList))
-        mViewModel.failure.observe(this, Observer(this@BoardsFragment::handleFailure))
-
-    }
-
-    private fun renderList(movies: List<Board>?) {
-        mAdapter.setData(movies as ArrayList<Board>)
-    }
-
-    private fun handleFailure(failure: Failure?) {
-        when (failure) {
-            is Failure.NetworkConnection -> renderFailure(getString(R.string.failure_network_connection))
-            is Failure.ServerError -> renderFailure(getString(R.string.failure_server_error))
-        }
-    }
-
-    private fun renderFailure(message: String) {
-        toast(message)
-
+        mViewModel.uiData.observe(this, Observer {
+            when (it?.status) {
+                Status.LOADING -> {
+                    // displayProgress()
+                }
+                Status.SUCCESS -> {
+                    Log.d(TAG, "--> Success! | loaded ${it.data?.size ?: 0} records.")
+                    // displayNormal()
+                    mAdapter.setData(it.data as ArrayList<Board>)
+                }
+                Status.ERROR -> {
+                    toast("Error: ${it.message}")
+                }
+            }
+        })
     }
 
     override fun onItemClick(dataObject: Board) {

@@ -40,7 +40,6 @@ class BoardsFragmentTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         fragment= BoardsFragment()
-        fragment.mViewModel=mViewModel
         startFragment(fragment, HomeActivity::class.java)
         context = RuntimeEnvironment.application.baseContext
     }
