@@ -18,7 +18,8 @@ package meirlen.cleanarch
 import android.app.Application
 
 import meirlen.cleanarch.di.appModule
-import meirlen.cleanarch.di.rxModule
+import meirlen.cleanarch.di.archModule
+import meirlen.cleanarch.di.utilModule
 import org.koin.android.ext.android.startKoin
 
 
@@ -28,7 +29,7 @@ open  class App : Application(){
     override fun onCreate() {
         super.onCreate()
 
-        startKoin(this, listOf(appModule, rxModule))
+        startKoin(this, listOf(appModule, archModule, utilModule))
 
     }
 

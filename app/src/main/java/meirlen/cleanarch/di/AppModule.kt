@@ -20,12 +20,15 @@ import java.util.concurrent.TimeUnit
 
 
 val appModule = module {
-    factory  {
+    factory {
         createOkHttpClient()
     }
     factory {
         createWebService<ApiService>(get(), BASE_URL)
     }
+
+}
+val archModule = module {
     module("repository") {
 
         factory {
@@ -40,30 +43,30 @@ val appModule = module {
             }
         }
     }
+
+}
+val utilModule = module {
     single {
         MainRouter()
     }
-}
-val rxModule = module {
-
 }
 
 fun createOkHttpClient(): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
     val okHttpBuilder = OkHttpClient.Builder()
-            .connectTimeout(Constant.CONNECT_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(Constant.READ_TIMEOUT, TimeUnit.SECONDS)
-            .addInterceptor(AuthInterceptor())
-            .addInterceptor(httpLoggingInterceptor)
+        .connectTimeout(Constant.CONNECT_TIMEOUT, TimeUnit.SECONDS)
+        .readTimeout(Constant.READ_TIMEOUT, TimeUnit.SECONDS)
+        .addInterceptor(AuthInterceptor())
+        .addInterceptor(httpLoggingInterceptor)
     return okHttpBuilder.build()
 }
 
 inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String): T {
     val retrofit = Retrofit.Builder()
-            .baseUrl(url)
-            .client(okHttpClient)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create()).build()
+        .baseUrl(url)
+        .client(okHttpClient)
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create()).build()
     return retrofit.create(T::class.java)
 }
