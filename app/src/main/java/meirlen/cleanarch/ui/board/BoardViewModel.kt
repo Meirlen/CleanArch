@@ -11,9 +11,11 @@ import meirlen.cleanarch.base.vo.Resource
 open class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : ViewModel() {
 
 
-    val uiData = MutableLiveData<Resource<List<Board>>>()
+    private val uiData = MutableLiveData<Resource<List<Board>>>()
 
-    fun getBoards() {
+    fun getBoards(): MutableLiveData<Resource<List<Board>>> {
+        uiData.value = Resource.loading(null)
+
         getBoardsUseCase.execute(
             {
                 uiData.value = Resource.success(it)
@@ -23,6 +25,7 @@ open class BoardViewModel(private val getBoardsUseCase: GetBoardsUseCase) : View
 
             }
         )
+        return uiData
     }
 
 

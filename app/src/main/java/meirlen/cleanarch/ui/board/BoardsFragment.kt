@@ -14,13 +14,14 @@ import meirlen.cleanarch.ui.board.list.BoardsAdapter
 import kotlinx.android.synthetic.main.board_list_fragment.*
 import meirlen.cleanarch.base.vo.Resource
 import meirlen.cleanarch.base.vo.Status
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
 
 
     val TAG = javaClass.simpleName
-    val mViewModel: BoardViewModel by viewModel()
+    val mViewModel: BoardViewModel by inject()
     private lateinit var mAdapter: BoardsAdapter
 
     companion object {
@@ -36,15 +37,14 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = mAdapter
 
-        mViewModel.getBoards()
-        mViewModel.uiData.observe(this, Observer {
+        mViewModel.getBoards().observe(this, Observer {
             when (it?.status) {
                 Status.LOADING -> {
-                    // displayProgress()
+                    displayProgress()
                 }
                 Status.SUCCESS -> {
                     Log.d(TAG, "--> Success! | loaded ${it.data?.size ?: 0} records.")
-                    // displayNormal()
+                    displayNormal()
                     mAdapter.setData(it.data as ArrayList<Board>)
                 }
                 Status.ERROR -> {
@@ -52,6 +52,15 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
                 }
             }
         })
+    }
+
+
+    private fun displayNormal() {
+        boardProgressBar.visibility = View.GONE
+    }
+
+    private fun displayProgress() {
+        boardProgressBar.visibility = View.VISIBLE
     }
 
     override fun onItemClick(dataObject: Board) {

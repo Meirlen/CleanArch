@@ -57,7 +57,7 @@ class HomeActivity : AppCompatActivity() {
         currentScreen = position
         supportFragmentManager.replaceByTag(R.id.frame_container, position.toString(), {
             when (position) {
-                HOME -> BoardsFragment()
+                HOME -> HomeFragment()
                 SEARCH -> HomeFragment()
                 SHARE -> HomeFragment()
                 FAVOURITE -> HomeFragment()
