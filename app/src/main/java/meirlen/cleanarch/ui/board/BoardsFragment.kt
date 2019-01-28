@@ -45,7 +45,7 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
                 Status.SUCCESS -> {
                     Log.d(TAG, "--> Success! | loaded ${it.data?.size ?: 0} records.")
                     displayNormal()
-                    mAdapter.setData(it.data as ArrayList<Board>)
+                    //mAdapter.setData(it.data as ArrayList<Board>)
                 }
                 Status.ERROR -> {
                     toast("Error: ${it.message}")
@@ -56,11 +56,11 @@ class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
 
 
     private fun displayNormal() {
-        boardProgressBar.visibility = View.GONE
+        mProgressBar.visibility = View.GONE
     }
 
     private fun displayProgress() {
-        boardProgressBar.visibility = View.VISIBLE
+        mProgressBar.visibility = View.VISIBLE
     }
 
     override fun onItemClick(dataObject: Board) {
