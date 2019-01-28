@@ -5,17 +5,14 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
-import com.example.domain.exception.Failure
 import meirlen.cleanarch.R
 import meirlen.cleanarch.base.ui.BaseFragment
 import meirlen.cleanarch.utill.interfaces.ItemClickListener
 import com.example.gateway.entity.Board
-import meirlen.cleanarch.ui.board.list.BoardsAdapter
+import meirlen.cleanarch.ui.board.adapter.BoardsAdapter
 import kotlinx.android.synthetic.main.board_list_fragment.*
-import meirlen.cleanarch.base.vo.Resource
 import meirlen.cleanarch.base.vo.Status
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class BoardsFragment : BaseFragment<List<Board>>(), ItemClickListener<Board> {
 

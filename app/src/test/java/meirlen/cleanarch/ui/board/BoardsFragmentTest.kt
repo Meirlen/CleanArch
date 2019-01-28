@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.board_list_fragment.*
 import meirlen.cleanarch.TestApplication
 import meirlen.cleanarch.base.vo.Resource
 import meirlen.cleanarch.routers.MainRouter
-import meirlen.cleanarch.ui.board.list.BoardsAdapter
+import meirlen.cleanarch.ui.board.adapter.BoardsAdapter
 import meirlen.cleanarch.utill.TestUtil
 import org.junit.Assert.*
 import org.junit.Before
