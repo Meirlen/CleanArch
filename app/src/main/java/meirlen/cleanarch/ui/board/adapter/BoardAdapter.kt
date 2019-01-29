@@ -28,6 +28,9 @@ open class BoardsAdapter(private var listener: ItemClickListener<Board>) :
         holder.itemView.txtTitle!!.text = board.name
         holder.itemView.setOnClickListener { listener.onItemClick(board) }
         holder.itemView.coverImageView.loadImage("https://pp.userapi.com/c841322/v841322681/5f307/sEetuxRTuIg.jpg")
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(board)
+        }
     }
 
     override fun getItemCount(): Int {
