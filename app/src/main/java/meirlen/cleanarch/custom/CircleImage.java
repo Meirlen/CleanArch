@@ -22,7 +22,7 @@ import static android.graphics.Color.BLACK;
 
 
 public class CircleImage extends AppCompatImageView {
-    private static final float STROKE_WIDTH = 15f;
+    private static final float STROKE_WIDTH = 45f;
     private RectF mRect = new RectF();
     private Path mClipPath = new Path();
     private int mImageSize;
@@ -70,49 +70,10 @@ public class CircleImage extends AppCompatImageView {
 
     }
 
-    /**
-     * create placeholder drawable
-     */
-    private void createDrawable() {
-        mDrawable = new Drawable() {
-            @Override
-            public void draw(@NonNull Canvas canvas) {
-                int centerX = Math.round(canvas.getWidth() * 0.5f);
-                int centerY = Math.round(canvas.getHeight() * 0.5f);
-
-                /**
-                 * draw a circle shape for placeholder image
-                 */
-                canvas.drawCircle(centerX, centerY, canvas.getHeight() / 2, mPaint);
-                canvas.drawCircle(centerX, centerY, canvas.getHeight() / 2, mBorderPaint);
-            }
-
-            @Override
-            public void setAlpha(int i) {
-
-            }
-
-            @Override
-            public void setColorFilter(@Nullable ColorFilter colorFilter) {
-
-            }
-
-            @Override
-            public int getOpacity() {
-                return PixelFormat.UNKNOWN;
-            }
-        };
-    }
 
     private void fillImages() {
         mPaint.setColor(BLACK);
-        createDrawable();
-        Glide.with(getContext())
-                .load(mImageResource)
-                .placeholder(mDrawable)
-                .centerCrop()
-                .override(mImageSize, mImageSize)
-                .into(this);
+
     }
 
     /**
