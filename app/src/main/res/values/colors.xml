@@ -9,10 +9,14 @@
     <color name="grey">#BBB</color>
 
 
+    //Custom view colors
+    <color name="highCircleColor">#48C5BB</color>
+    <color name="middleCircleColor">#605995</color>
+    <color name="bottomCircleColor">#45406B</color>
+
 
 
     <color name="colorPrimaryTransparent">#CC000000</color>
-
     <color name="colorError">#FFE44F4F</color>
     <color name="colorErrorTransparent">#55E44F4F</color>
 
